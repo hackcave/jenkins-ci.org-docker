@@ -1,4 +1,4 @@
-FROM java:openjdk-7u65-jdk
+FROM dockerfile/java:oracle-java8
 
 RUN apt-get update && apt-get install -y wget git curl zip && rm -rf /var/lib/apt/lists/*
 
