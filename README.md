@@ -56,7 +56,7 @@ You might need to customize the JVM running Jenkins, typically to pass system pr
 variable for this purpose :
 
 ```
-docker run --name myjenkins -p 8080:8080 -env JAVA_OPTS=-Dhudson.footerURL=http://mycompany.com jenkins
+docker run --name myjenkins -p 8080:8080 --env JAVA_OPTS=-Dhudson.footerURL=http://mycompany.com jenkins
 ```
 
 # Passing Jenkins launcher parameters
@@ -82,11 +82,12 @@ EXPOSE 8083
 
 # Installing more tools
 
-You can run your container as root - and unstall via apt-get, install as part of build steps via jenkins tool installers, or you can create your own Dockerfile to customise, for example: 
+You can run your container as root - and install via apt-get, install as part of build steps via jenkins tool installers, or you can create your own Dockerfile to customise, for example: 
 
 ```
 FROM jenkins
-USER root # if we want to install via apt
+# if we want to install via apt
+USER root
 RUN apt-get install -y ruby make more-thing-here
 USER jenkins # drop back to the regular jenkins user - good practice
 ```
